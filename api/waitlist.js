@@ -30,7 +30,7 @@ const contactExistsInBrevo = async (email) => {
       {
         headers: {
           Accept: "application/json",
-          "api-key": process.env.BREVO_API_KEY,
+          "api-key": BREVO_API_KEY,
         },
       },
     );
