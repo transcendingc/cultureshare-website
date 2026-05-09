@@ -2,8 +2,6 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 
-const waitlistHandler = require("./api/waitlist");
-
 const PORT = Number(process.env.PORT || 3001);
 const ENV_PATH = path.join(__dirname, ".env");
 
@@ -45,6 +43,8 @@ const loadEnvFile = () => {
 
 loadEnvFile();
 
+const waitlistHandler = require("./api/waitlist");
+
 const readBody = (req) =>
   new Promise((resolve, reject) => {
     const chunks = [];
@@ -67,8 +67,15 @@ const server = http.createServer(async (req, res) => {
   if (req.url === "/api/waitlist") {
     try {
       const rawBody = await readBody(req);
-      try { req.body = JSON.parse(rawBody); } catch { req.body = {}; }
-      res.status = (code) => { res.statusCode = code; return res; };
+      try {
+        req.body = JSON.parse(rawBody);
+      } catch {
+        req.body = {};
+      }
+      res.status = (code) => {
+        res.statusCode = code;
+        return res;
+      };
       res.json = (data) => {
         res.setHeader("Content-Type", "application/json");
         res.end(JSON.stringify(data));
@@ -78,7 +85,9 @@ const server = http.createServer(async (req, res) => {
       console.error("[server] Unhandled error:", err.message);
       res.statusCode = 500;
       res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify({ message: err.message || "Internal server error." }));
+      res.end(
+        JSON.stringify({ message: err.message || "Internal server error." }),
+      );
     }
     return;
   }

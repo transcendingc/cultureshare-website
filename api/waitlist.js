@@ -1,5 +1,7 @@
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
 const DEFAULT_LIST_NAME = "WAITLIST";
+const BREVO_API_KEY =
+  process.env.BREVO_API_KEY || process.env.CULTURESHARE_API_KEY;
 
 const brevoRequest = async (path, options = {}) => {
   const response = await fetch(`${BREVO_BASE_URL}${path}`, {
@@ -7,7 +9,7 @@ const brevoRequest = async (path, options = {}) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "api-key": process.env.BREVO_API_KEY,
+      "api-key": BREVO_API_KEY,
       ...(options.headers || {}),
     },
   });
@@ -30,7 +32,7 @@ const contactExistsInBrevo = async (email) => {
           Accept: "application/json",
           "api-key": process.env.BREVO_API_KEY,
         },
-      }
+      },
     );
     return response.ok;
   } catch {
@@ -44,7 +46,7 @@ const findOrCreateList = async (listName) => {
 
   while (true) {
     const data = await brevoRequest(
-      `/contacts/lists?limit=${limit}&offset=${offset}`
+      `/contacts/lists?limit=${limit}&offset=${offset}`,
     );
     const existing = (data.lists || []).find((l) => l.name === listName);
     if (existing) return existing.id;
@@ -64,7 +66,7 @@ const findOrCreateList = async (listName) => {
 
 const addToBrevo = async (firstName, lastName, email) => {
   const listId = await findOrCreateList(
-    process.env.BREVO_LIST_NAME || DEFAULT_LIST_NAME
+    process.env.BREVO_LIST_NAME || DEFAULT_LIST_NAME,
   );
   await brevoRequest("/contacts", {
     method: "POST",
@@ -101,20 +103,28 @@ module.exports = async (req, res) => {
     const trimmedLastName = String(lastName || "").trim();
 
     if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
-      return res.status(400).json({ message: "A valid email address is required." });
+      return res
+        .status(400)
+        .json({ message: "A valid email address is required." });
     }
 
     if (!trimmedFirstName || !trimmedLastName) {
-      return res.status(400).json({ message: "First name and last name are required." });
+      return res
+        .status(400)
+        .json({ message: "First name and last name are required." });
     }
 
-    if (!process.env.BREVO_API_KEY) {
-      return res.status(500).json({ message: "Waitlist service is not configured." });
+    if (!BREVO_API_KEY) {
+      return res
+        .status(500)
+        .json({ message: "Waitlist service is not configured." });
     }
 
     const alreadyRegistered = await contactExistsInBrevo(trimmedEmail);
     if (alreadyRegistered) {
-      return res.status(409).json({ message: "You're already on the waitlist!" });
+      return res
+        .status(409)
+        .json({ message: "You're already on the waitlist!" });
     }
 
     await addToBrevo(trimmedFirstName, trimmedLastName, trimmedEmail);
@@ -144,7 +154,9 @@ module.exports = async (req, res) => {
       console.warn("[mailer] Skipping email — SMTP_USER / SMTP_PASS not set");
     }
 
-    return res.status(200).json({ message: "You've been added to the waitlist!" });
+    return res
+      .status(200)
+      .json({ message: "You've been added to the waitlist!" });
   } catch (error) {
     return res.status(500).json({
       message: error.message || "Unable to add to waitlist.",
