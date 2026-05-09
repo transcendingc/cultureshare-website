@@ -11,10 +11,17 @@ import GallerySection from "./components/organisms/GallerySection";
 import ForWhomSection from "./components/organisms/ForWhomSection";
 import FooterSection from "./components/organisms/FooterSection";
 
-const launchDate = new Date("2026-06-01T00:00:00Z");
+const getLaunchDate = () => {
+  const now = new Date();
+  const launchDate = new Date(now);
+  launchDate.setMonth(launchDate.getMonth() + 5);
+  launchDate.setHours(0, 0, 0, 0);
+  return launchDate;
+};
 
 const getTimeLeft = () => {
   const now = Date.now();
+  const launchDate = getLaunchDate();
   const diff = Math.max(0, launchDate - now);
 
   return {

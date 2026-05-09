@@ -6,11 +6,11 @@
   --muted: #61677c;
   --navy: #0a1f0d;
   --navy-soft: #1a3a22;
-  --teal: #1B6B3A;
-  --teal-dark: #134F2B;
-  --gold: #C8963E;
-  --gold-dark: #A37228;
-  --green: #1B6B3A;
+  --teal: #1b6b3a;
+  --teal-dark: #134f2b;
+  --gold: #c8963e;
+  --gold-dark: #a37228;
+  --green: #1b6b3a;
   --border: rgba(15, 53, 22, 0.08);
   --shadow-lg: 0 30px 80px rgba(17, 39, 22, 0.12);
   --shadow-md: 0 20px 50px rgba(17, 39, 22, 0.09);
@@ -334,7 +334,11 @@ input {
     min-width: 0;
   }
 
-  .waitlist-form input,
+  .waitlist-form input {
+    max-height: 60px;
+    border-radius: 18px;
+  }
+
   .waitlist-form button,
   .footer-cta {
     min-height: 60px;
