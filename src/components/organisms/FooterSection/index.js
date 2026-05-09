@@ -11,7 +11,7 @@ const xLogo = "https://res.cloudinary.com/dojx1kdh2/image/upload/v1777081959/twi
 const socialLinks = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/cultureshare.co/",
     logo: instagramLogo,
     iconOnly: true,
   },
@@ -23,13 +23,13 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/culture-share-127606409/",
     logo: linkedInLogo,
     iconOnly: true,
   },
   {
     label: "X (Twitter)",
-    href: "#",
+    href: "https://x.com/cultureshareco",
     logo: xLogo,
     iconOnly: true,
   },
