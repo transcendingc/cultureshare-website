@@ -1,0 +1,121 @@
+.hero-section {
+  background: linear-gradient(135deg, #0e2415 0%, #162e1d 60%, #0f2617 100%);
+  padding: 140px 0 80px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-copy {
+  color: #fff;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+.hero-accent {
+  color: #C8963E;
+}
+
+.hero-copy p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 520px;
+  margin: 0 0 32px;
+}
+
+/* override waitlist form colors for dark bg */
+.hero-copy .waitlist-form__controls {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+.hero-copy .waitlist-form input {
+  color: #fff;
+  background: transparent;
+}
+.hero-copy .waitlist-form input::placeholder { color: rgba(255,255,255,0.45); }
+.hero-copy .waitlist-form__status { color: rgba(255,255,255,0.5) !important; }
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.72);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C8963E;
+  flex-shrink: 0;
+}
+
+.hero-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-mockup__card {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+  animation: float-gentle 7s ease-in-out infinite;
+}
+
+.hero-mockup__card img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@media (max-width: 900px) {
+  .hero-section { padding: 120px 0 60px; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    width: min(100%, calc(100% - 32px));
+  }
+  .hero-mockup { display: none; }
+}
+
+@media (max-width: 560px) {
+  .hero-copy h1 { font-size: 2.1rem; }
+  .hero-chips { gap: 8px; }
+  .hero-chip { font-size: 12px; padding: 6px 12px; }
+}

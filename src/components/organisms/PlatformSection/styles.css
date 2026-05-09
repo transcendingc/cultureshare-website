@@ -1,0 +1,172 @@
+.platform-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.platform-inner {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.platform-kicker {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #C8963E;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.platform-copy h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #07070f;
+  margin: 0 0 20px;
+}
+
+.platform-copy h2 span { color: #C8963E; }
+
+.platform-copy p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+.platform-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.platform-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.platform-checklist li::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #C8963E;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10l4 4 6-7' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.platform-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: #C8963E;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.platform-cta:hover {
+  background: #A37228;
+  transform: translateY(-1px);
+}
+
+/* Diagram */
+.platform-diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.platform-hub {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  place-items: center;
+}
+
+.platform-hub__center {
+  grid-column: 2;
+  grid-row: 2;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a0e02, #0a0b45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(200,150,62,0.15), 0 0 0 20px rgba(200,150,62,0.06);
+  z-index: 2;
+}
+
+.platform-hub__label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #C8963E;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.platform-hub__sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+}
+
+.platform-node {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.platform-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(200,150,62,0.18);
+}
+
+.platform-node__icon { font-size: 22px; }
+.platform-node__label { font-size: 10px; font-weight: 700; color: #333; letter-spacing: 0.03em; text-transform: uppercase; }
+
+@media (max-width: 1100px) {
+  .platform-inner { grid-template-columns: 1fr; gap: 48px; }
+  .platform-diagram { display: none; }
+}
+
+@media (max-width: 900px) {
+  .platform-section { padding: 72px 0; }
+  .platform-inner { width: min(100%, calc(100% - 32px)); }
+}

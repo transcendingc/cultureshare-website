@@ -1,0 +1,222 @@
+.countdown-section {
+  padding: 48px 0;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(240, 232, 210, 0.80) 0%,
+      rgba(245, 238, 218, 0.78) 100%
+    ),
+    url("../../../assets/images/maasai-road-savanna.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.countdown-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  width: min(1280px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-left: 35px;
+}
+
+.countdown-copy {
+  align-self: center;
+}
+
+.countdown-kicker {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: #374151;
+  width: 100%;
+}
+
+.countdown-copy h2 {
+  margin: 18px 0 0;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+  font-weight: 600;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.countdown-copy h2 span {
+  display: inline-block;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    rgba(200, 150, 62, 0.9),
+    rgba(163, 114, 40, 0.9)
+  );
+  padding: 0 10px 6px;
+}
+
+.countdown-panel-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.countdown-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 28px;
+  border-radius: 42px;
+  background: linear-gradient(180deg, #17171b 0%, #050506 100%);
+  box-shadow:
+    0 18px 45px rgba(5, 8, 20, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.countdown-panel::before {
+  content: "";
+  position: absolute;
+  inset: -28px;
+  z-index: -1;
+  border-radius: 58px;
+  background:
+    radial-gradient(
+      circle at 18% 35%,
+      rgba(27, 107, 58, 0.55),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 78% 28%,
+      rgba(200, 150, 62, 0.38),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 84% 84%,
+      rgba(27, 107, 58, 0.25),
+      transparent 24%
+    );
+  filter: blur(26px);
+}
+
+.countdown-panel::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: -2;
+  border-radius: 72px;
+  background:
+    radial-gradient(
+      circle at 25% 45%,
+      rgba(27, 107, 58, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 74% 36%,
+      rgba(200, 150, 62, 0.15),
+      transparent 35%
+    );
+  filter: blur(38px);
+}
+
+.countdown-box {
+  width: 82px;
+  min-height: 90px;
+  border-radius: 10px;
+  padding: 24px 10px 18px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(55, 55, 58, 0.9),
+    rgba(29, 29, 31, 0.92)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.countdown-box strong {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.05em;
+}
+
+.countdown-box span {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 63px;
+  margin-top: 14px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.countdown-separator {
+  margin-top: -16px;
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .countdown-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-copy {
+    text-align: center;
+  }
+
+  .countdown-kicker {
+    justify-content: center;
+  }
+
+  .countdown-sub {
+    margin: 22px auto 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .countdown-section {
+    padding: 40px 0;
+  }
+
+  .countdown-inner {
+    width: min(100%, calc(100% - 24px));
+    gap: 28px;
+    padding-left: 0;
+  }
+
+  .countdown-panel {
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 28px 20px;
+  }
+
+  .countdown-separator {
+    display: none;
+  }
+
+  .countdown-box {
+    width: calc(50% - 8px);
+  }
+}
+
+@media (max-width: 560px) {
+  .countdown-copy h2 {
+    font-size: 2.7rem;
+  }
+
+  .countdown-box {
+    width: 100%;
+  }
+
+  .countdown-box strong {
+    font-size: 3rem;
+  }
+}
